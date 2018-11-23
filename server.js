@@ -1,5 +1,15 @@
+'use strict';
+
 const rp = require('request-promise');
+const express = require('express');
+const app = express();
+const path = require('path');
+const PORT = 3000;
 const cheerio = require('cheerio');
+
+app.use(express.json());
+
+
 const options = {
 	url: 'https://www2.hm.com/hu_hu/noi/vasarlas-termek-szerint/ingek-es-bluzok.html',
 	headers: {
@@ -7,32 +17,49 @@ const options = {
 	}
 }
 
-const result = [];
-let counter = 1;
+app.listen(PORT, () => {
+	console.log(`Server is running on port ${PORT}`);
+  });
 
-rp(options)
-	.then(html => {
-		const $ = cheerio.load(html);
+  app.get('/hm', (req, res) => {
+    const result = [];
+    let finished;
+	  
+	  rp(options)
+    
+    .then(html => {
+		  const $ = cheerio.load(html);
+		  let counter = 1;
+	
+			$('.products-listing').find('li').each(function (i, el) {
+				if ( i % 2 === 0) {
+					result.push({
+            'serialNum': counter,
+						'name': cheerio.load(el)(' article > .item-details > .item-heading > a').text(),
+						'price': cheerio.load(el)(' article > .item-details > .item-price > span').text(),
+						'img': cheerio.load(el)(' article > .image-container > a > .item-image').attr('src'),
+					})
+					counter++;
+				}
+			})
+    })
+    
+    .then(() => {
+      finished = true;
 
-		$('.products-listing').find('li').each(function (i, el) {
-			if ( i % 2 === 0) {
-				result.push({
-					'serialNum': counter,
-					'name': cheerio.load(el)(' article > .item-details > .item-heading > a').text(),
-					'price': cheerio.load(el)(' article > .item-details > .item-price > span').text(),
-					'img': cheerio.load(el)(' article > .image-container > a > .item-image').attr('data-altimage'),
-				})
-				counter++;
-			}
-		})
-	})
-	// const name = $('.products-listing > li:first-child > article > .item-details > .item-heading > a', html).text()
-	// const price = $('.products-listing > li:first-child > article > .item-details > .item-price > span', html).text()
+    })
 
-	.catch(err => {
-		console.log(err);
-	});
+		.catch(err => {
+			console.log(err);
+    });
 
-	setTimeout(() => {
-		console.log(result);
-	}, 2000);
+    const interval = setInterval(() => {
+      if (finished) {
+        res.json({
+          'data': result,
+        });
+        clearInterval(interval);
+      }
+    }, 500);
+  });
+
