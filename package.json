@@ -1,0 +1,31 @@
+{
+  "name": "duri-server",
+  "version": "1.0.0",
+  "description": "a small surpise to Zsuzsi",
+  "main": "server.js",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lantos14/duri.git"
+  },
+  "keywords": [
+    "duri",
+    "clothes"
+  ],
+  "author": "lantos14",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lantos14/duri/issues"
+  },
+  "homepage": "https://github.com/lantos14/duri#readme"
+}
