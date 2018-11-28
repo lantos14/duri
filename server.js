@@ -1,6 +1,7 @@
 const
   express = require('express'),
-  getClothList = require('./src/rp'),
+  getHmList = require('./src/getHmList'),
+  getPromodList = require('./src/getPromodList'),
   app = express(),
   PORT = 3000;
 
@@ -19,10 +20,23 @@ app.get('/hm', async (req, res) => {
     }
   }
 
-  const result = await getClothList(options);
-  console.log(result);
+  const result = await getHmList(options);
   res.json({
     'data': result,
   });
 });
 
+app.get('/promod', async (req, res) => {
+  const options = {
+    url: 'https://www.promod.hu/noi/pulover-kardigan/index.html',
+    headers: {
+      'Accept': 'text/html',
+    }
+  }
+
+  const result = await getPromodList(options);
+  console.log(result);
+  res.json({
+    'data': result,
+  });
+});

@@ -1,7 +1,7 @@
 const cheerio = require('cheerio');
 const rp = require('request-promise');
 
-const getClothList = async options => {
+const getHmList = async options => {
 
   let clothList = [];
 
@@ -31,4 +31,4 @@ const getClothList = async options => {
   return clothList;
 }
 
-module.exports = getClothList;
+module.exports = getHmList;
