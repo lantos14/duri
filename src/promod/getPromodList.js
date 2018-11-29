@@ -12,13 +12,21 @@ const getPromodList = async () => {
     const status = await _page.open('https://www.promod.hu/noi/pulover-kardigan/index.html');
     console.log(status);
 
-    const result = await _page.evaluate(function(s) {
-        return document.querySelector(s).innerText;
-    }, '#resultatsSearch');
-
+    const productDescrip = await _page.evaluate(function() {
+      return document.querySelectorAll('.productBox');
+    });
+    let productList = [];
+  
+    for (let i = 0; i < productDescrip.length; i++) {
+      const e = productDescrip[i];
+      productList.push({
+        'name': name,
+      });
+    }
+  
     await _ph.exit();
 
-    return result;
+    return productDescrip;
 
 }
 
