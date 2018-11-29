@@ -1,29 +1,39 @@
-const cheerio = require('cheerio');
-const rp = require('request-promise');
+const phantom = require("phantom");
+var _ph, _page, _outObj;
 
-const getPromodList = async options => {
+const getPromodList = async () => {
 
-  let clothList;
+    let result;
 
-  await rp(options)
+    await phantom.create().then(function (ph) {
+        _ph = ph;
+        return _ph.createPage();
 
-    .then(html => {
-      const $ = cheerio.load(html);
+    }).then(function (page) {
+        _page = page;
+        return _page.open('https://www.promod.hu/noi/pulover-kardigan/index.html');
 
-      $('#resultatsSearch').find('article').each(function (i, el) {
-        clothList.push({
-          'serialNum': counter,
-          'name': cheerio.load(el).attr('data-product-name'),
-          'price': cheerio.load(el)('.descrip > .prix > .current > .decimales').text(),
-          'img': cheerio.load(el)('.search-product > .visuel-container > .tooltip-produit > .tooltip-content > .imgtooltip > a > img').attr('src'),
-        });
-      })
+    }).then(function (status) {
+        console.log(status);
+        
+        const title = _page.evaluate(function(s) {
+            return document.querySelector(s).innerText;
+        }, '#resultatsSearch');
 
-        .catch(err => {
-          console.log(err);
-        });
+        result = title;
+        return result;
 
-      return clothList;
-    })
+    }).then(function (content) {
+        _page.close();
+        _ph.exit();
+        result = content;
+
+    }).catch(function(e) {
+       console.log(e); 
+    });
+
+    return result
+
 }
+
 module.exports = getPromodList;
