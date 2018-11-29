@@ -1,12 +1,12 @@
 const
   express = require('express'),
-  getHmList = require('./src/getPromodList'),
+  getHmList = require('./src/promod/getPromodList'),
   app = express(),
   PORT = 3000;
 
 app.use(express.json());
 
-app.get('/hm', async (req, res) => {
+app.get('/promod', async (req, res) => {
   
   const result = await getHmList();
   

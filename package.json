@@ -5,6 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "express": "^4.16.4",
+    "phantom": "^6.0.3",
     "request": "^2.88.0",
     "request-promise": "^4.2.2"
   },
