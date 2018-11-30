@@ -5,29 +5,35 @@ const getPromodList = async () => {
     const _ph = await phantom.create();
     const _page = await _ph.createPage();
 
-    await _page.on("onResourceRequested", function(requestData) {
-        console.info('Requesting', requestData.url)
+    await _page.on("onConsoleMessage", function(msg) {
+      console.log('---console:', msg)
     });
 
     const status = await _page.open('https://www.promod.hu/noi/pulover-kardigan/index.html');
     console.log(status);
 
-    const productDescrip = await _page.evaluate(function() {
-      return document.querySelectorAll('.productBox');
+
+    const products = await _page.evaluate(function() {
+      boxes = document.querySelectorAll('.productBox .imgtooltip img');
+      priceContainers = document.querySelectorAll('.productBox .descrip .decimales');
+      const productsResult = []
+
+      // get name and img src
+      for (let i = 0; i < boxes.length; i++) {
+        const nameAndImg = boxes[i];
+        const priceCont = priceContainers[i];
+        productsResult.push({
+          'name': nameAndImg.alt,
+          'img': nameAndImg.src,
+          'price': priceCont.innerText,
+        });
+      }
+      return productsResult;
     });
-    let productList = [];
-  
-    for (let i = 0; i < productDescrip.length; i++) {
-      const e = productDescrip[i];
-      productList.push({
-        'name': name,
-      });
-    }
-  
+
     await _ph.exit();
 
-    return productDescrip;
-
+    return products;
 }
 
 module.exports = getPromodList;

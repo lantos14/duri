@@ -11,7 +11,7 @@ app.get('/promod', async (req, res) => {
   const result = await getHmList();
   
   res.json({
-    'data': result,
+    result,
   });
 });
 
