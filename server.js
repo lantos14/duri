@@ -1,8 +1,8 @@
-const
-  express = require('express'),
-  getHmList = require('./src/promod/getPromodList'),
-  app = express(),
-  PORT = 3000;
+import express from 'express';
+import getHmList from './src/promod/getPromodList';
+
+const app = express();
+const PORT = 3000;
 
 app.use(express.json());
 
