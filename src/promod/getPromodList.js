@@ -36,4 +36,4 @@ const getPromodList = async () => {
     return products;
 }
 
-module.exports = getPromodList;
+export default getPromodList;
