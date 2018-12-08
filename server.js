@@ -1,14 +1,17 @@
 import express from 'express';
-import getHmList from './src/promod/getPromodList';
+import scrapeController from './src/Scrapers/scrapeController';
+import parseQuery from './src/utilities/parseQuery';
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
 
-app.get('/promod', async (req, res) => {
-  
-  const result = await getHmList();
+app.get('/', async (req, res) => {
+
+  const queries = parseQuery(req.query);
+  console.log(`query parameters: `, queries);
+  const result = await scrapeController(queries);
   
   res.json({
     result,
