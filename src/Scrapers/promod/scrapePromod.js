@@ -5,15 +5,19 @@ const scrapePromod = async (products) => {
   // establish result object
   const productsResult = {};
   productsResult.store = 'promod';
-  let dataContent = [];
 
+  const promises = [];
   for (let i = 0; i < products.length; i++) {
     const product = products[i];
-    const scrapeResult = await scrapeWorkerPromod(product);
-    dataContent.push(scrapeResult);
+    promises.push(scrapeWorkerPromod(product));
   }
 
-  productsResult.data = dataContent;
+  await Promise.all(promises).
+  then((results) => {
+    productsResult.data = results;
+
+  });
+
   return productsResult;
 }
 

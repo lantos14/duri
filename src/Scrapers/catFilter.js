@@ -22,10 +22,8 @@ export default class productCategories {
     parseInput(query, store) {
         let result = [];
         query.forEach(cat => {
-            console.log('cat: ', cat);
             result.push(this.filter[cat][store]);
         });
-        console.log('--parseInput-result: ', result);
         return result;
     }
 
