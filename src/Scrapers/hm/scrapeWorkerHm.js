@@ -1,4 +1,4 @@
-import addProductType from './addProductType';
+import addProductType from '../addProductType';
 const phantom = require("phantom");
 
 const scrapeWorker = async (productName) => {

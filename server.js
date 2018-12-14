@@ -1,7 +1,6 @@
 import express from 'express';
 import scrapeController from './src/Scrapers/scrapeController';
 import parseQuery from './src/utilities/parseQuery';
-
 const app = express();
 const PORT = 3000;
 

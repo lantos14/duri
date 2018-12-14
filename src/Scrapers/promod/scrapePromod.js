@@ -1,4 +1,4 @@
-import scrapeWorker from './scrapeWorker';
+import scrapeWorkerPromod from './scrapeWorkerPromod';
 
 const scrapePromod = async (products) => {
   console.log('---log: scrapePromod fn is initiated with: ', products);
@@ -9,7 +9,7 @@ const scrapePromod = async (products) => {
 
   for (let i = 0; i < products.length; i++) {
     const product = products[i];
-    const scrapeResult = await scrapeWorker(product);
+    const scrapeResult = await scrapeWorkerPromod(product);
     dataContent.push(scrapeResult);
   }
 
