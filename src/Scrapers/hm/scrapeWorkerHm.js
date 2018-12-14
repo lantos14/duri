@@ -9,22 +9,21 @@ const scrapeWorker = async (productName) => {
     console.log('---phantom log: ', msg)
   });
 
-  const status = await _page.open(`https://www.promod.hu/noi/${productName}/index.html`);
+  const status = await _page.open(`https://www2.hm.com/hu_hu/noi/vasarlas-termek-szerint/${productName}.html`);
   console.log('---log: ', status);
 
   const scrapedData = await _page.evaluate(function () {
-    boxes = document.querySelectorAll('.productBox .imgtooltip img');
-    priceContainers = document.querySelectorAll('.productBox .descrip .decimales');
+    imgTags = document.querySelectorAll('.product-item .image-container img');
+    itemHeadings = document.querySelectorAll('.product-item .item-heading a');
+    priceTags = document.querySelectorAll('.product-item .price.regular');
     const objList = [];
 
     // get name and img src
-    for (let i = 0; i < boxes.length; i++) {
-      const nameAndImg = boxes[i];
-      const priceCont = priceContainers[i];
+    for (let i = 0; i < imgTags.length; i++) {
       objList.push({
-        'name': nameAndImg.alt,
-        'img': nameAndImg.src,
-        'price': priceCont.innerText,
+        'name': itemHeadings[i].innerText,
+        'img': imgTags[i].src,
+        'price': priceTags[i].innerText,
       });
     }
     return objList;

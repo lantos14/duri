@@ -17,7 +17,8 @@ const getScrapeResults = async (query) => {
 
   if (query.stores.indexOf('hm') > -1) {
     console.log('---log: scrapeHm condition is met');
-    const hmProducts = await scrapeHm(query.products);
+    const promodProdNames = await masterList.parseInput(query.products, 'hm');
+    const hmProducts = await scrapeHm(promodProdNames);
     result.push(hmProducts);
   }
 
