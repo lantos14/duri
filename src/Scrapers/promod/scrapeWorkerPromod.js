@@ -12,6 +12,12 @@ const scrapeWorker = async (productName) => {
   const status = await _page.open(`https://www.promod.hu/noi/${productName}/index.html`);
   console.log('---log: ', status);
 
+  for (let i = 0; i < 3; i++) {
+    await _page.evaluate(function (){
+      window.scrollBy(0, 3000);
+    });
+  }
+
   const scrapedData = await _page.evaluate(function () {
     boxes = document.querySelectorAll('.productBox .imgtooltip img');
     priceContainers = document.querySelectorAll('.productBox .descrip .decimales');

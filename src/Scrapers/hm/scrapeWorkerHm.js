@@ -9,7 +9,7 @@ const scrapeWorker = async (productName) => {
     console.log('---phantom log: ', msg)
   });
 
-  const status = await _page.open(`https://www2.hm.com/hu_hu/noi/vasarlas-termek-szerint/${productName}.html`);
+  const status = await _page.open(`https://www2.hm.com/hu_hu/noi/vasarlas-termek-szerint/${productName}.html?page-size=100`);
   console.log('---log: ', status);
 
   const scrapedData = await _page.evaluate(function () {
