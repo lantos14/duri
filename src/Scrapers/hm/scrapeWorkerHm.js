@@ -20,9 +20,10 @@ const scrapeWorker = async (productName) => {
 
     // get name and img src
     for (let i = 0; i < imgTags.length; i++) {
+      console.log(imgTags[i].src);
       objList.push({
         'name': itemHeadings[i].innerText,
-        'img': imgTags[i].src,
+        'img': imgTags[i].dataset.src,
         'price': priceTags[i].innerText,
       });
     }
