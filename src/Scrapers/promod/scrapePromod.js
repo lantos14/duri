@@ -1,4 +1,5 @@
 import scrapeWorkerPromod from './scrapeWorkerPromod';
+import countProductNum from '../../utilities/counter';
 
 const scrapePromod = async (products) => {
   console.log('---log: scrapePromod fn is initiated with: ', products);
@@ -14,6 +15,7 @@ const scrapePromod = async (products) => {
 
   await Promise.all(promises).
   then((results) => {
+    productsResult.dataLength = countProductNum(results);
     productsResult.data = results;
 
   });
