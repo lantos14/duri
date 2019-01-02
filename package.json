@@ -4,7 +4,9 @@
   "description": "a small surpise to Zsuzsi",
   "main": "server.js",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "mongoose": "^5.4.1",
     "phantom": "^6.0.3",
     "request": "^2.88.0",
     "request-promise": "^4.2.2"

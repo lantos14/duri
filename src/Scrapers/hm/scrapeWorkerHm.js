@@ -25,6 +25,7 @@ const scrapeWorker = async (productName) => {
         'name': itemHeadings[i].innerText,
         'img': imgTags[i].dataset.src,
         'price': priceTags[i].innerText,
+        'store': 'hm',
       });
     }
     return objList;

@@ -2,6 +2,8 @@ import express from 'express';
 import scrapeController from './src/Scrapers/scrapeController';
 import parseQuery from './src/utilities/parseQuery';
 const app = express();
+
+const bodyParser = require('body-parser');
 const PORT = 3000;
 
 app.use(express.json());

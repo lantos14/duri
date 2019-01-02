@@ -5,7 +5,6 @@ const scrapePromod = async (products) => {
   console.log('---log: scrapePromod fn is initiated with: ', products);
   // establish result object
   const productsResult = {};
-  productsResult.store = 'promod';
 
   const promises = [];
   for (let i = 0; i < products.length; i++) {
