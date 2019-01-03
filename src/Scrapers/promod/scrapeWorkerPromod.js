@@ -40,7 +40,7 @@ const scrapeWorker = async (productName) => {
   console.log('---log: _ph.exit fn initiated');
   await _ph.exit();
   
-  console.log(`---log: scrapedData`, scrapedData);
+  console.log(`---log: scrapedData length/category: `, scrapedData.length);
   addProductType(productName, scrapedData);
 
   return scrapedData;

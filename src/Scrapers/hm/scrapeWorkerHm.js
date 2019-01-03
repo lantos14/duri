@@ -5,9 +5,9 @@ const scrapeWorker = async (productName) => {
   // scraper functions
   const _ph = await phantom.create();
   const _page = await _ph.createPage();
-  await _page.on("onConsoleMessage", function (msg) {
-    console.log('---phantom log: ', msg)
-  });
+  // await _page.on("onConsoleMessage", function (msg) {
+  //   console.log('---phantom log: ', msg)
+  // });
 
   const status = await _page.open(`https://www2.hm.com/hu_hu/noi/vasarlas-termek-szerint/${productName}.html?page-size=100`);
   console.log('---log: ', status);
@@ -34,7 +34,7 @@ const scrapeWorker = async (productName) => {
   console.log('---log: _ph.exit fn initiated');
   await _ph.exit();
   
-  console.log(`---log: scrapedData`, scrapedData);
+  console.log(`---log: scrapedData length/category`, scrapedData.length);
   addProductType(productName, scrapedData);
 
   return scrapedData;

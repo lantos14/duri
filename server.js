@@ -1,28 +1,31 @@
 import express from 'express';
 import scrapeController from './src/Scrapers/scrapeController';
 import parseQuery from './src/utilities/parseQuery';
-import Product from './src/models/product.model';
-const app = express();
 
+const app = express();
 const bodyParser = require('body-parser');
+const { routerDB } = require('./src/routers');
 const PORT = 3000;
 
-const handleError = function(err) {
-  console.error(err);
-  // handle your error
-};
+require('dotenv').config()
+
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Set up mongoose connection
 const mongoose = require('mongoose');
-const mongoDB = 'mongodb+srv://lantos:<PASSWORD>@duri-products-euhwc.mongodb.net/duriDB?retryWrites=true';
+const mongoDB = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PWD}@duri-products-euhwc.mongodb.net/duriDB?retryWrites=true`;
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-app.use(express.json());
+// routes
 
-app.get('/', async (req, res) => {
+app.use(routerDB);
+
+app.get('/test', async (req, res) => {
 
   const queries = parseQuery(req.query);
   console.log(`query parameters: `, queries);
@@ -31,19 +34,6 @@ app.get('/', async (req, res) => {
   res.json({
     result,
   });
-});
-
-app.get('/db', () => {
-
-  // Create an instance of model SomeModel
-  var awesome_instance = new Product({ name: 'awesome', price: '300' });
-
-  // Save the new model instance, passing a callback
-  awesome_instance.save(function (err) {
-    if (err) return handleError(err);
-    // saved!
-  });
-
 });
 
 app.listen(PORT, () => {

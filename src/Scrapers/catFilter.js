@@ -15,7 +15,39 @@ export default class productCategories {
                 "promod": 'ruha',
                 "hm": 'ruhak',
             }
-        }
+        },
+        
+        this.fetchList = {
+            "promod": [
+                'pulover-kardigan',
+                'top-t-shirts',
+                'ing-bluz',
+                'ruha',
+                'szoknya',
+                // 'kabat',
+                // 'zako-kiskabat',
+                // 'nadrag',
+                // 'farmer',
+                // 'overal',
+                // 'short',
+                // 'taskak',
+                // 'cipo',
+        
+            ],
+            "hm": [
+                'felsok',
+                'ingek-es-bluzok',
+                'kardiganok-es-puloverek',
+                'kapucnisok-melegitofelsok',
+                'nadragok',
+                // 'farmerek',
+                // 'szoknyak',
+                // 'ruhak',
+                // 'cipok',
+                // 'kotottek',
+                // 'basics',
+            ]
+        };
     }
 
     // use this method to parse the incoming product names to the specific store format
@@ -28,35 +60,3 @@ export default class productCategories {
     }
 
 }
-
-const list = {
-    "promod": [
-        'pulover-kardigan',
-        'top-t-shirts',
-        'ing-bluz',
-        'ruha',
-        'szoknya',
-        'kabat',
-        'zako-kiskabat',
-        'nadrag',
-        'farmer',
-        'overal',
-        'short',
-        'taskak',
-        'cipo',
-
-    ],
-    "hm": [
-        'felsok',
-        'ingek-es-bluzok',
-        'kardiganok-es-puloverek',
-        'kapucnisok-melegitofelsok',
-        'nadragok',
-        'farmerek',
-        'szoknyak',
-        'ruhak',
-        'cipok',
-        'kotottek',
-        'basics',
-    ]
-};
