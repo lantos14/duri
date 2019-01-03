@@ -9,20 +9,21 @@ const routerDB = express.Router();
 routerDB
   .route('/products')
 
-  .get((req, res, next) => {
-    return res.json({ "method": "get" });
+  .get(async (req, res, next) => {
+    Product.find({}, (err, products) => {
+      return res.json({ products });
+    });
   })
 
   .post(async (req, res, next) => {
 
     // start the scraping
     const productList = new productCategories;
-    console.log('masterList: ', productList.fetchList);
-    const result = await scrapeController(productList.fetchList);    
-    
+    const result = await scrapeController(productList.fetchList);
+
     await result.forEach(productCategoryList => {
       productCategoryList.forEach(product => {
-        
+
         // Create an instance of model Product
         const product_instance = new Product({
           "img": product.img,
@@ -35,7 +36,7 @@ routerDB
         // Save the new model instance, passing a callback
         product_instance.save(function (err) {
           if (err) return handleError(err);
-          
+
         });
       });
     })
