@@ -8,12 +8,12 @@ const getScrapeResults = async (productList) => {
   const result = [];
   const masterList = new productCategories;
 
-    const promodProducts = await scrapePromod(productList.promod);
+    const promodProducts = await scrapePromod(productList.promod.slice(0, 5));
     promodProducts.data.forEach(product => {
       result.push(product)
     });
 
-    const hmProducts = await scrapeHm(productList.hm);
+    const hmProducts = await scrapeHm(productList.hm.slice(0, 5));
     hmProducts.data.forEach(product => {
       result.push(product)
     });
