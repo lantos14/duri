@@ -7,13 +7,21 @@ routerUser
   .route('/users')
 
   .get(async (req, res) => {
-    Product.find({ }, (err, users) => {
+    if (req.headers.authorization !== process.env.SECRET) {
+      return res.status(401).send("401 - Not authorized");
+    }
+
+    User.find({ }, (err, users) => {
       return res.json({ users });
     });
   })
 
   
   .post(async (req, res) => {
+    if (req.headers.authorization !== process.env.SECRET) {
+      return res.status(401).send("401 - Not authorized");
+    }
+    
     // req validation
 
     if (req.body.username && req.body.email && req.body.password) {
