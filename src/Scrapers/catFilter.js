@@ -24,14 +24,10 @@ export default class productCategories {
                 'ing-bluz',
                 'ruha',
                 'szoknya',
+                'kabat',
                 'nadrag',
                 'farmer',
-                'cipo',
-                'kabat',
-                'zako-kiskabat',
-                'overal',
                 'short',
-                'taskak',
         
             ],
             "hm": [
@@ -42,10 +38,7 @@ export default class productCategories {
                 'szoknyak',
                 'nadragok',
                 'farmerek',
-                'cipok',
-                'kapucnisok-melegitofelsok',
                 'kotottek',
-                'basics',
             ]
         };
     }
