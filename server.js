@@ -4,7 +4,7 @@ import parseQuery from './src/utilities/parseQuery';
 
 const app = express();
 const bodyParser = require('body-parser');
-const { routerDB } = require('./src/routers');
+const { routerDB, routerUser } = require('./src/routers');
 const PORT = 3000;
 
 require('dotenv').config()
@@ -24,6 +24,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 // routes
 
 app.use(routerDB);
+app.use(routerUser);
 
 app.get('/test', async (req, res) => {
 
