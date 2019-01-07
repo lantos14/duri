@@ -11,7 +11,7 @@ routerDB
 
   .get(async (req, res, next) => {
 
-    Product.find({ type: {$in: ["nadragok", "felsok"]} }, (err, products) => {
+    Product.find({ }, (err, products) => {
       return res.json({ products });
     });
   })

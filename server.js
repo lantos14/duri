@@ -1,6 +1,8 @@
 import express from 'express';
+import cron from 'node-cron';
 import scrapeController from './src/Scrapers/scrapeController';
 import parseQuery from './src/utilities/parseQuery';
+import handleData from './src/scheduler/index';
 
 const app = express();
 const bodyParser = require('body-parser');
@@ -39,4 +41,12 @@ app.get('/test', async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+});
+
+// initiate schedule
+
+cron.schedule('0 0 * * *', () => {
+  console.log('---log: daily data fetching started');
+
+  handleData();
 });

@@ -9,6 +9,7 @@
     "express": "^4.16.4",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.1",
+    "node-cron": "^2.0.3",
     "phantom": "^6.0.3",
     "request": "^2.88.0",
     "request-promise": "^4.2.2"
