@@ -1,12 +1,12 @@
 import express from 'express';
 import cron from 'node-cron';
-import scrapeController from './src/Scrapers/scrapeController';
-import parseQuery from './src/utilities/parseQuery';
-import handleData from './src/scheduler/index';
+import scrapeController from './Scrapers/scrapeController';
+import parseQuery from './utilities/parseQuery';
+import handleData from './scheduler/index';
 
 const app = express();
 const bodyParser = require('body-parser');
-const { routerDB, routerUser } = require('./src/routers');
+const { routerDB, routerUser } = require('./routers');
 const PORT = process.env.PORT || 3000;
 
 require('dotenv').config()
