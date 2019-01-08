@@ -7,7 +7,7 @@ import countProductsSum from '../utilities/countProductsSum';
 const routerDB = express.Router();
 
 routerDB
-  .route('/')
+  .route('/products')
 
   .get(async (req, res, next) => {
 
