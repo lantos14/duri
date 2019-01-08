@@ -7,7 +7,7 @@ import handleData from './src/scheduler/index';
 const app = express();
 const bodyParser = require('body-parser');
 const { routerDB, routerUser } = require('./src/routers');
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 require('dotenv').config()
 
