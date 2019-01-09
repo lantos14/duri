@@ -26,7 +26,7 @@ var routerDB = _express2.default.Router();
 
 routerDB.route('/products').get(async function (req, res, next) {
 
-  _product2.default.find({}, function (err, products) {
+  _product2.default.find().limit(10).exec(function (err, products) {
     return res.json({ products: products });
   });
 }).post(async function (req, res, next) {
