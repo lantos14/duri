@@ -27,7 +27,7 @@
     "build-babel": "babel -d ./build ./src -s",
     "build": "npm run clean && npm run build-babel",
     "babel-node": "babel-node --presets es2015",
-    "start": "npm run build && node ./build/server.js"
+    "start": "node ./build/server.js"
   },
   "repository": {
     "type": "git",
