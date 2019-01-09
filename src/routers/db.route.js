@@ -11,7 +11,9 @@ routerDB
 
   .get(async (req, res, next) => {
 
-    Product.find({ }, (err, products) => {
+    Product.find()
+    .limit(10)
+    .exec((err, products) => {
       return res.json({ products });
     });
   })
