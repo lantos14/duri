@@ -18,6 +18,8 @@ app.use(express.json());
 // Set up mongoose connection
 const mongoose = require('mongoose');
 const mongoDB = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PWD}@duri-products-euhwc.mongodb.net/duriDB?retryWrites=true`;
+console.log('process.env.DB_USERNAME: ', process.env.DB_USERNAME);
+console.log('process.env.DB_PWD: ', process.env.DB_PWD);
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
