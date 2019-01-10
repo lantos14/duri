@@ -52,7 +52,7 @@ var scrapeWorker = async function scrapeWorker(productName) {
   await _ph.exit();
 
   console.log("---log: scrapedData length/category: ", scrapedData.length);
-  (0, _addProductType2.default)(productName, scrapedData);
+  (0, _addProductType2.default)(productName, 'promod', scrapedData);
 
   return scrapedData;
 };

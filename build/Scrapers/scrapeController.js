@@ -12,10 +12,6 @@ var _scrapeHm = require('./hm/scrapeHm');
 
 var _scrapeHm2 = _interopRequireDefault(_scrapeHm);
 
-var _catFilter = require('./catFilter');
-
-var _catFilter2 = _interopRequireDefault(_catFilter);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var getScrapeResults = async function getScrapeResults(productList) {
@@ -23,12 +19,12 @@ var getScrapeResults = async function getScrapeResults(productList) {
   console.log('productList: ', productList);
   var result = [];
 
-  var promodProducts = await (0, _scrapePromod2.default)(productList.promod);
+  var promodProducts = await (0, _scrapePromod2.default)(productList.fetchList.promod);
   promodProducts.data.forEach(function (product) {
     result.push(product);
   });
 
-  var hmProducts = await (0, _scrapeHm2.default)(productList.hm);
+  var hmProducts = await (0, _scrapeHm2.default)(productList.fetchList.hm);
   hmProducts.data.forEach(function (product) {
     result.push(product);
   });
