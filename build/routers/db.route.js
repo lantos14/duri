@@ -25,8 +25,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var routerDB = _express2.default.Router();
 
 routerDB.route('/products').get(async function (req, res, next) {
-
-  _product2.default.find().limit(req.query.limit || 30).exec(function (err, products) {
+  var limit = parseInt(req.query.limit) || 30;
+  console.log('limit: ', limit);
+  _product2.default.find({
+    store: ['hm', 'promod'],
+    type: ['pulover-kardigan']
+  }).limit(limit).exec(function (err, products) {
     return res.json({ products: products });
   });
 }).post(async function (req, res, next) {
@@ -35,8 +39,7 @@ routerDB.route('/products').get(async function (req, res, next) {
     return res.status(401).send("401 - Not authorized");
   }
   // start the scraping
-  var productList = new _catFilter2.default();
-  var result = await (0, _scrapeController2.default)(productList.fetchList);
+  var result = await (0, _scrapeController2.default)(_catFilter2.default);
 
   await result.forEach(function (productCategoryList) {
     productCategoryList.forEach(function (product) {
@@ -58,8 +61,7 @@ routerDB.route('/products').get(async function (req, res, next) {
   });
 
   return res.json({
-    "status": "ok",
-    "ProductsFound": (0, _countProductsSum2.default)(result)
+    "status": "ok"
   });
 }).delete(async function (req, res, next) {
   _product2.default.deleteMany({}, function (err) {

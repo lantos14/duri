@@ -51,12 +51,8 @@ app.use(routerUser);
 
 app.get('/test', async function (req, res) {
 
-  var queries = (0, _parseQuery2.default)(req.query);
-  console.log('query parameters: ', queries);
-  var result = await (0, _scrapeController2.default)(queries);
-
   res.json({
-    result: result
+    'msg': 'Server is up and running'
   });
 });
 

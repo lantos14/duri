@@ -3,11 +3,12 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var addProductType = function addProductType(name, data) {
+//            pl.: hm  (kardiganok-puloverek, data) => return 'kardiganok-puloverek'
+var addProductType = function addProductType(name, store, data) {
   var result = data;
-
+  var universalType = defineType(store, name);
   result.forEach(function (product) {
-    product.type = name;
+    product.type = universalType;
   });
 
   return result;

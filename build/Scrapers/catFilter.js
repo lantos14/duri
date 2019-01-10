@@ -8,9 +8,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var productCategories = function () {
-    function productCategories() {
-        _classCallCheck(this, productCategories);
+var ProductCategories = function () {
+    function ProductCategories() {
+        _classCallCheck(this, ProductCategories);
 
         this.filter = {
             "ingek-blúzok": {
@@ -30,11 +30,10 @@ var productCategories = function () {
             "hm": ['kardiganok-es-puloverek', 'felsok', 'ingek-es-bluzok', 'ruhak', 'szoknyak', 'nadragok', 'farmerek', 'kotottek']
         };
     }
-
     // use this method to parse the incoming product names to the specific store format
 
 
-    _createClass(productCategories, [{
+    _createClass(ProductCategories, [{
         key: "parseInput",
         value: function parseInput(query, store) {
             var _this = this;
@@ -47,8 +46,10 @@ var productCategories = function () {
         }
     }]);
 
-    return productCategories;
+    return ProductCategories;
 }();
+
+var productCategories = new ProductCategories();
 
 exports.default = productCategories;
 //# sourceMappingURL=catFilter.js.map
