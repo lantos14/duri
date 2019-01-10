@@ -41,7 +41,7 @@ const scrapeWorker = async (productName) => {
   await _ph.exit();
   
   console.log(`---log: scrapedData length/category: `, scrapedData.length);
-  addProductType(productName, scrapedData);
+  addProductType(productName, 'promod', scrapedData);
 
   return scrapedData;
 }

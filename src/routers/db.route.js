@@ -10,9 +10,13 @@ routerDB
   .route('/products')
 
   .get(async (req, res, next) => {
-
-    Product.find()
-    .limit(10)
+    const limit = parseInt(req.query.limit) || 30;
+    console.log('limit: ', limit);
+    Product.find({
+      store: ['hm', 'promod'],
+      type: ['pulover-kardigan']
+    })
+    .limit(limit)
     .exec((err, products) => {
       return res.json({ products });
     });
@@ -25,8 +29,7 @@ routerDB
       return res.status(401).send("401 - Not authorized");
     }
     // start the scraping
-    const productList = new productCategories;
-    const result = await scrapeController(productList.fetchList);
+    const result = await scrapeController(productCategories);
     
     await result.forEach(productCategoryList => {
       productCategoryList.forEach(product => {
@@ -50,7 +53,6 @@ routerDB
     
     return res.json({
       "status": "ok",
-      "ProductsFound": countProductsSum(result),
     });
   })
   

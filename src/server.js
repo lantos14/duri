@@ -30,12 +30,8 @@ app.use(routerUser);
 
 app.get('/test', async (req, res) => {
 
-  const queries = parseQuery(req.query);
-  console.log(`query parameters: `, queries);
-  const result = await scrapeController(queries);
-
   res.json({
-    result,
+    'msg': 'Server is up and running',
   });
 });
 

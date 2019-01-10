@@ -1,5 +1,5 @@
 
-export default class productCategories {
+class ProductCategories {
 
     constructor() {
         this.filter = {
@@ -42,7 +42,6 @@ export default class productCategories {
             ]
         };
     }
-
     // use this method to parse the incoming product names to the specific store format
     parseInput(query, store) {
         let result = [];
@@ -51,5 +50,8 @@ export default class productCategories {
         });
         return result;
     }
-
 }
+
+const productCategories = new ProductCategories;
+
+export default productCategories;
