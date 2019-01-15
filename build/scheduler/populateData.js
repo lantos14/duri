@@ -20,7 +20,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var populateWithNewData = async function populateWithNewData() {
   // start the scraping
-  var productList = new _catFilter2.default();
+  var productList = _catFilter2.default;
   var result = await (0, _scrapeController2.default)(productList.fetchList);
 
   await result.forEach(function (productCategoryList) {
@@ -41,6 +41,7 @@ var populateWithNewData = async function populateWithNewData() {
       });
     });
   });
+  return result;
 };
 
 exports.default = populateWithNewData;
