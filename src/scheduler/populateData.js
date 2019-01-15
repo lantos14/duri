@@ -4,7 +4,7 @@ import productCategories from '../Scrapers/catFilter';
 
 const populateWithNewData = async () => {
   // start the scraping
-  const productList = new productCategories;
+  const productList = productCategories;
   const result = await scrapeController(productList.fetchList);
 
   await result.forEach(productCategoryList => {
@@ -26,6 +26,7 @@ const populateWithNewData = async () => {
       });
     });
   })
+  return result;
 };
 
 export default populateWithNewData;

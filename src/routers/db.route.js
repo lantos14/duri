@@ -3,6 +3,7 @@ import Product from '../models/product.model';
 import scrapeController from '../Scrapers/scrapeController';
 import productCategories from '../Scrapers/catFilter';
 import countProductsSum from '../utilities/countProductsSum';
+import handleData from '../scheduler';
 
 const routerDB = express.Router();
 
@@ -13,7 +14,7 @@ routerDB
     const limit = parseInt(req.query.limit) || 30;
     console.log('limit: ', limit);
     Product.find({
-      store: ['hm', 'promod'],
+      store: ['promod'],
       type: ['pulover-kardigan']
     })
     .limit(limit)
@@ -29,30 +30,10 @@ routerDB
       return res.status(401).send("401 - Not authorized");
     }
     // start the scraping
-    const result = await scrapeController(productCategories);
-    
-    await result.forEach(productCategoryList => {
-      productCategoryList.forEach(product => {
-        
-        // Create an instance of model Product
-        const product_instance = new Product({
-          "img": product.img,
-          "name": product.name,
-          "price": product.price,
-          "store": product.store,
-          "type": product.type,
-        });
-        
-        // Save the new model instance, passing a callback
-        product_instance.save(function (err) {
-          if (err) return handleError(err);
-          
-        });
-      });
-    })
-    
+    const status = await handleData();
+
     return res.json({
-      "status": "ok",
+      status,
     });
   })
   
