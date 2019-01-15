@@ -1,17 +1,17 @@
 import productCategories from './catFilter';
 
 const defineType = (store, typeFromStore) => {
-  console.log('---debug defineType typeFromStore: ', typeFromStore);
-  console.log('---debug defineType store: ', store);
+  console.log('---debug defineType typeFromStore: ', typeFromStore);// kabat
+  console.log('---debug defineType store: ', store);// promod
   let universalType;
-  for (key in productCategories.filter) {
 
-    if (key[store] === typeFromStore) {
-      universalType = key[store];
+  Object.entries(productCategories.filter).forEach(universalProductTypeObject => {
+    if (typeFromStore === universalProductTypeObject[1][store]) {
+      universalType = universalProductTypeObject[0];
     }
+  });
 
-  }
-  console.log('---debug defineType universalType: ', universalType);
+  console.log('---debug defineType universalType: ', universalType); // undefined
 
   return universalType;
 }

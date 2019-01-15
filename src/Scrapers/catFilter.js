@@ -14,31 +14,30 @@ class ProductCategories {
             "ruhák": {
                 "promod": 'ruha',
                 "hm": 'ruhak',
-            }
+            },
         },
         
         this.fetchList = {
             "promod": [
                 'pulover-kardigan',
-                'top-t-shirts',
                 'ing-bluz',
                 'ruha',
-                'szoknya',
-                'kabat',
-                'nadrag',
-                'farmer',
-                'short',
+                // 'top-t-shirts',
+                // 'szoknya',
+                // 'nadrag',
+                // 'farmer',
+                // 'short',
         
             ],
             "hm": [
                 'kardiganok-es-puloverek',
-                'felsok',
                 'ingek-es-bluzok',
                 'ruhak',
-                'szoknyak',
-                'nadragok',
-                'farmerek',
-                'kotottek',
+                // 'felsok',
+                // 'szoknyak',
+                // 'nadragok',
+                // 'farmerek',
+                // 'kotottek',
             ]
         };
     }

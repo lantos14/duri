@@ -23,6 +23,8 @@ var ProductSchema = new Schema({
     type: String,
     required: true
   }
+}, {
+  timestamps: true
 });
 
 // Export the model

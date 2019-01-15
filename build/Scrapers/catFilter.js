@@ -26,8 +26,8 @@ var ProductCategories = function () {
                 "hm": 'ruhak'
             }
         }, this.fetchList = {
-            "promod": ['pulover-kardigan', 'top-t-shirts', 'ing-bluz', 'ruha', 'szoknya', 'kabat', 'nadrag', 'farmer', 'short'],
-            "hm": ['kardiganok-es-puloverek', 'felsok', 'ingek-es-bluzok', 'ruhak', 'szoknyak', 'nadragok', 'farmerek', 'kotottek']
+            "promod": ['pulover-kardigan', 'ing-bluz', 'ruha'],
+            "hm": ['kardiganok-es-puloverek', 'ingek-es-bluzok', 'ruhak']
         };
     }
     // use this method to parse the incoming product names to the specific store format

@@ -20,7 +20,9 @@ let ProductSchema = new Schema({
     img: {
       type: String,
       required: true,
-    }
+    },
+  }, {
+    timestamps: true
 });
 
 

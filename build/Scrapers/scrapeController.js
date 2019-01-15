@@ -19,12 +19,12 @@ var getScrapeResults = async function getScrapeResults(productList) {
   console.log('productList: ', productList);
   var result = [];
 
-  var promodProducts = await (0, _scrapePromod2.default)(productList.fetchList.promod);
+  var promodProducts = await (0, _scrapePromod2.default)(productList.promod);
   promodProducts.data.forEach(function (product) {
     result.push(product);
   });
 
-  var hmProducts = await (0, _scrapeHm2.default)(productList.fetchList.hm);
+  var hmProducts = await (0, _scrapeHm2.default)(productList.hm);
   hmProducts.data.forEach(function (product) {
     result.push(product);
   });

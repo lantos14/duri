@@ -6,12 +6,12 @@ const getScrapeResults = async (productList) => {
   console.log('productList: ', productList);
   const result = [];
 
-    const promodProducts = await scrapePromod(productList.fetchList.promod);
+    const promodProducts = await scrapePromod(productList.promod);
     promodProducts.data.forEach(product => {
       result.push(product)
     });
 
-    const hmProducts = await scrapeHm(productList.fetchList.hm);
+    const hmProducts = await scrapeHm(productList.hm);
     hmProducts.data.forEach(product => {
       result.push(product)
     });
