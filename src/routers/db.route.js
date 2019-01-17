@@ -1,8 +1,5 @@
 import express from 'express';
 import Product from '../models/product.model';
-import scrapeController from '../Scrapers/scrapeController';
-import productCategories from '../Scrapers/catFilter';
-import countProductsSum from '../utilities/countProductsSum';
 import handleData from '../scheduler';
 
 const routerDB = express.Router();

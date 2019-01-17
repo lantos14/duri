@@ -1,16 +1,13 @@
 import express from 'express';
 import cron from 'node-cron';
-import scrapeController from './Scrapers/scrapeController';
-import parseQuery from './utilities/parseQuery';
 import handleData from './scheduler/index';
 
 const app = express();
 const bodyParser = require('body-parser');
-const { routerDB, routerUser } = require('./routers');
+const { routerDB, routerUser, routerTest } = require('./routers');
 const PORT = process.env.PORT || 3000;
 
 require('dotenv').config()
-
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
@@ -27,6 +24,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.use(routerDB);
 app.use(routerUser);
+app.use(routerTest);
 
 app.get('/test', async (req, res) => {
 
