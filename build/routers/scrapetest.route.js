@@ -13,11 +13,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var routerTest = _express2.default.Router();
 
 routerTest.route('/test').get(function (req, res) {
-  console.log('req.query: ', req.query);
+  console.log('--log--test ... req.query: ', req.query);
 
   var storeQuery = req.query.store.split(',') || '';
 
-  console.log('storeQuery: ', storeQuery);
+  console.log('--log--test ... storeQuery: ', storeQuery);
 
   _product2.default.find({ store: storeQuery }, function (err, result) {
     return res.json({

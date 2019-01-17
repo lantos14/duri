@@ -8,9 +8,11 @@ routerDB
   .route('/products')
 
   .get(async (req, res, next) => {
-    
-    const storeQuery = req.query.store.split(',') || '';
-    const typeQuery = req.query.store.split(',') || '';
+    if (!req.query.store || !req.query.type) {
+      return res.status(400).send({ error: "Store or type data hasn't been provided" })
+    }
+    const storeQuery = (req.query.store || '').split(',') || '';
+    const typeQuery = (req.query.type || '').split(',') || '';
     Product.find({
       store: storeQuery,
       type: typeQuery,
