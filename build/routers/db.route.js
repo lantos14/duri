@@ -8,18 +8,6 @@ var _product = require('../models/product.model');
 
 var _product2 = _interopRequireDefault(_product);
 
-var _scrapeController = require('../Scrapers/scrapeController');
-
-var _scrapeController2 = _interopRequireDefault(_scrapeController);
-
-var _catFilter = require('../Scrapers/catFilter');
-
-var _catFilter2 = _interopRequireDefault(_catFilter);
-
-var _countProductsSum = require('../utilities/countProductsSum');
-
-var _countProductsSum2 = _interopRequireDefault(_countProductsSum);
-
 var _scheduler = require('../scheduler');
 
 var _scheduler2 = _interopRequireDefault(_scheduler);

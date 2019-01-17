@@ -8,14 +8,6 @@ var _nodeCron = require('node-cron');
 
 var _nodeCron2 = _interopRequireDefault(_nodeCron);
 
-var _scrapeController = require('./Scrapers/scrapeController');
-
-var _scrapeController2 = _interopRequireDefault(_scrapeController);
-
-var _parseQuery = require('./utilities/parseQuery');
-
-var _parseQuery2 = _interopRequireDefault(_parseQuery);
-
 var _index = require('./scheduler/index');
 
 var _index2 = _interopRequireDefault(_index);
@@ -27,7 +19,8 @@ var bodyParser = require('body-parser');
 
 var _require = require('./routers'),
     routerDB = _require.routerDB,
-    routerUser = _require.routerUser;
+    routerUser = _require.routerUser,
+    routerTest = _require.routerTest;
 
 var PORT = process.env.PORT || 3000;
 
@@ -48,6 +41,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.use(routerDB);
 app.use(routerUser);
+app.use(routerTest);
 
 app.get('/test', async function (req, res) {
 
