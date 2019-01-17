@@ -8,13 +8,13 @@ routerDB
   .route('/products')
 
   .get(async (req, res, next) => {
-    const limit = parseInt(req.query.limit) || 30;
-    console.log('limit: ', limit);
+    
+    const storeQuery = req.query.store.split(',') || '';
+    const typeQuery = req.query.store.split(',') || '';
     Product.find({
-      store: ['promod'],
-      type: ['pulover-kardigan']
+      store: storeQuery,
+      type: typeQuery,
     })
-    .limit(limit)
     .exec((err, products) => {
       return res.json({ products });
     });

@@ -7,11 +7,11 @@ routerTest
   .route('/test')
 
   .get((req, res) => {
-    console.log('req.query: ', req.query);
+    console.log('--log--test ... req.query: ', req.query);
 
     const storeQuery = req.query.store.split(',') || '';
 
-    console.log('storeQuery: ', storeQuery);
+    console.log('--log--test ... storeQuery: ', storeQuery);
 
     Product.find({ store: storeQuery }, (err, result) => {
       return res.json({ 
