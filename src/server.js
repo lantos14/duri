@@ -5,6 +5,7 @@ import handleData from './scheduler/index';
 const app = express();
 const cors = require('cors')
 const bodyParser = require('body-parser');
+app.use(cors());
 const { routerDB, routerUser, routerTest } = require('./routers');
 const PORT = process.env.PORT || 3000;
 
@@ -12,7 +13,6 @@ require('dotenv').config()
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
 
 // Set up mongoose connection
 const mongoose = require('mongoose');
