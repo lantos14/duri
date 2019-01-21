@@ -18,15 +18,16 @@ routerDB
       store: storeQuery,
       type: typeQuery,
     })
-    .exec((err, products) => {
-      console.log('GET req products: ', products.length);
-      return res.json({ products });
-    });
+      .exec((err, products) => {
+        console.log('GET req products: ', products.length);
+        res.set("Access-Control-Allow-Origin", "*");
+        return res.json({ products });
+      });
   })
 
-  
+
   .post(async (req, res, next) => {
-    
+
     if (req.headers.authorization !== process.env.SECRET) {
       return res.status(401).send("401 - Not authorized");
     }
@@ -37,14 +38,14 @@ routerDB
       status,
     });
   })
-  
+
   .delete(async (req, res, next) => {
-    Product.deleteMany({ }, (err) => {
+    Product.deleteMany({}, (err) => {
       return res.json({ result: "success" });
     });
   });
 
-  const handleError = function (err) {
+const handleError = function (err) {
   console.error(err);
   // handle your error
 };
