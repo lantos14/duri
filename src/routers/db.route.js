@@ -8,6 +8,7 @@ routerDB
   .route('/products')
 
   .get(async (req, res, next) => {
+    console.log('GET:', req.query);
     if (!req.query.store || !req.query.type) {
       return res.status(400).send({ error: "Store or type data hasn't been provided" })
     }
@@ -18,6 +19,7 @@ routerDB
       type: typeQuery,
     })
     .exec((err, products) => {
+      console.log('GET req products: ', products.length);
       return res.json({ products });
     });
   })
