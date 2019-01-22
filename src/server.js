@@ -13,6 +13,7 @@ require('dotenv').config()
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 
 // Set up mongoose connection
 const mongoose = require('mongoose');

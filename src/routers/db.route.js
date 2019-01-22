@@ -20,7 +20,7 @@ routerDB
     })
       .exec((err, products) => {
         console.log('GET req products: ', products.length);
-        res.set("Access-Control-Allow-Origin", "*");
+        console.log('res: ', res);
         return res.json({ products });
       });
   })
