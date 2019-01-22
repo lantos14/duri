@@ -17,6 +17,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var routerDB = _express2.default.Router();
 
 routerDB.route('/products').get(async function (req, res, next) {
+  console.log('GET:', req.query);
   if (!req.query.store || !req.query.type) {
     return res.status(400).send({ error: "Store or type data hasn't been provided" });
   }
@@ -26,6 +27,8 @@ routerDB.route('/products').get(async function (req, res, next) {
     store: storeQuery,
     type: typeQuery
   }).exec(function (err, products) {
+    console.log('GET req products: ', products.length);
+    console.log('res: ', res);
     return res.json({ products: products });
   });
 }).post(async function (req, res, next) {

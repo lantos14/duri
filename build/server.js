@@ -15,6 +15,7 @@ var _index2 = _interopRequireDefault(_index);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = (0, _express2.default)();
+var cors = require('cors');
 var bodyParser = require('body-parser');
 
 var _require = require('./routers'),
@@ -28,6 +29,7 @@ require('dotenv').config();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(_express2.default.json());
+app.use(cors());
 
 // Set up mongoose connection
 var mongoose = require('mongoose');
