@@ -1,6 +1,6 @@
 import express from 'express';
 import Product from '../models/product.model';
-
+import handleData from '../scheduler';
 const routerTest = express.Router();
 
 routerTest
@@ -20,7 +20,20 @@ routerTest
       });
     })
 
-  });
+  })
+
+  .post(async (req, res, next) => {
+
+    if (req.headers.authorization !== process.env.SECRET) {
+      return res.status(401).send("401 - Not authorized");
+    }
+    // start the scraping
+    const status = await handleData(true);
+
+    return res.json({
+      status,
+    });
+  })
 
 
 module.exports = routerTest;
