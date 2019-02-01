@@ -18,7 +18,15 @@ class ProductCategories {
             "nadrágok": {
                 "promod": 'nadrag',
                 "hm": 'nadragok',
-            }
+            },
+            "szoknyák": {
+                "promod": 'szoknya',
+                "hm": 'szoknyak',
+            },
+            "felsők": {
+                "promod": 'top-t-shirts',
+                "hm": 'felsok',
+            },
         },
         
         this.fetchList = {
@@ -26,8 +34,8 @@ class ProductCategories {
                 'pulover-kardigan',
                 'ing-bluz',
                 'ruha',
-                // 'top-t-shirts',
-                // 'szoknya',
+                'top-t-shirts',
+                'szoknya',
                 'nadrag',
                 // 'farmer',
                 // 'short',
@@ -37,8 +45,8 @@ class ProductCategories {
                 'kardiganok-es-puloverek',
                 'ingek-es-bluzok',
                 'ruhak',
-                // 'felsok',
-                // 'szoknyak',
+                'felsok',
+                'szoknyak',
                 'nadragok',
                 // 'farmerek',
                 // 'kotottek',
