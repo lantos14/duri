@@ -9,7 +9,7 @@ const handleData = async (test) => {
 
   if (test) {
     const productList = productCategories;
-    const result = await scrapeController(productList.fetchList);
+    const result = await scrapeController(productList.promodTester);
 
     return {
       numberOfProducts: countProductsSum(result),
