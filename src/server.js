@@ -29,13 +29,6 @@ app.use(routerDB);
 app.use(routerUser);
 app.use(routerTest);
 
-app.get('/test', async (req, res) => {
-
-  res.json({
-    'msg': 'Server is up and running',
-  });
-});
-
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

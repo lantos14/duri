@@ -40,6 +40,20 @@ class ProductCategories {
                 // 'kotottek',
             ]
         };
+
+        this.promodTester = {
+            "promod": [
+                'pulover-kardigan',
+                'ing-bluz',
+                'ruha',
+                // 'top-t-shirts',
+                // 'szoknya',
+                // 'nadrag',
+                // 'farmer',
+                // 'short',
+        
+            ],
+        }
     }
     // use this method to parse the incoming product names to the specific store format
     parseInput(query, store) {
