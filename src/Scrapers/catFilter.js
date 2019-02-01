@@ -15,6 +15,10 @@ class ProductCategories {
                 "promod": 'ruha',
                 "hm": 'ruhak',
             },
+            "nadrágok": {
+                "promod": 'nadrag',
+                "hm": 'nadragok',
+            }
         },
         
         this.fetchList = {
@@ -24,7 +28,7 @@ class ProductCategories {
                 'ruha',
                 // 'top-t-shirts',
                 // 'szoknya',
-                // 'nadrag',
+                'nadrag',
                 // 'farmer',
                 // 'short',
         
@@ -35,7 +39,7 @@ class ProductCategories {
                 'ruhak',
                 // 'felsok',
                 // 'szoknyak',
-                // 'nadragok',
+                'nadragok',
                 // 'farmerek',
                 // 'kotottek',
             ]
